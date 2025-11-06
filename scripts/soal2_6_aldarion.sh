@@ -15,8 +15,8 @@ subnet 10.72.1.0 netmask 255.255.255.0{
         option broadcast-address 10.72.1.255;
         range 10.72.1.6 10.72.1.34;
         range 10.72.1.68 10.72.1.94;
-        default-lease-time 18000;
-        max-lease-time 36000;
+        default-lease-time 1800;
+        max-lease-time 3600;
 }
 
 subnet 10.72.2.0 netmask 255.255.255.0 {
@@ -35,7 +35,7 @@ subnet 10.72.4.0 netmask 255.255.255.0 {
         range 10.72.4.35 10.72.4.67;
         range 10.72.4.96 10.72.4.121;
         default-lease-time 600;
-        max-lease-time 36000;
+        max-lease-time 3600;
 }
 
 subnet 10.72.5.0 netmask 255.255.255.0 {
