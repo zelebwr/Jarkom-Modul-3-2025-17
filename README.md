@@ -701,7 +701,7 @@ Tambahkan konfigurasi berikut:
 Pada node **Elros**, instal dependensi dengan perintah berikut:
 ```
 apt udpate
-apt install python3 pyhton3-flask python3-pip -y
+apt install python3 php8.4-fpm python3-pip -y
 ```
 Lalu, buat program pada **Elros** untuk simulasi kerja `/api/airing` 
 
@@ -902,10 +902,34 @@ service nginx restart
 ```
 
 ### 14.2 Uji Akses
-Jika kita menjalankan perintah ```curl http://elros.k17.com/api/airing```, akan didapatkan _Unauthorized prompt_ seperti berikut:
+Jika kita menjalankan perintah ```curl http://oropher.k17.com```, akan didapatkan *Unauthorized prompt* seperti berikut:
 
-Lakukan juga uji dengan kredensial yang sudah ditentukan menggunakan perintah berikut:
+Lakukan curl dengan parameter kredensial seperti berikut:
 ```
-curl -u noldor:silvan http://elros.k17.com/api/airing
+curl -u noldor:silvan http://oropher.k17.com
 ```
-Jika konfigurasi sudah berjalan dengan benar, maka akan didapatkan _prompt_ seperti ini:
+
+## 15. IP Client
+**Goal**: Menampilkan alamat IP pengunjung asli pada index.php
+
+Tambahkan konfigurasi berikut pada file nginx bagian `location ~\.php$`
+```
+fastcgi_param X-Real-IP $remote_addr;
+fastcgi_param X-Forwarded-For $proxy_addr;
+```
+
+Terapkan perubahan pada konfigurasi:
+```
+nginx -t
+service nginx restart
+```
+
+Ubah file `/var/www/html/index.php` menjadi seperti ini:
+```
+<?php
+$hostname = gethostname();
+$ip = $_SERVER['HTTP_X_REAL_IP'] ?? $_SERVER['REMOTE_ADDR'];
+echo "<h1>Welcome to $hostname</h1>";
+echo "<p>Your IP address: <strong>$ip</strong></p>";
+?>
+```
