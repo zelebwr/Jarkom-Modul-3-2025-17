@@ -158,11 +158,11 @@ tambahkan domain pada file `/etc/hosts` sebagai berikut:
 
 Ketika kita menjalankan perintah `curl http://oropher.k17.com`. Akan didapatkan respon sebagai berikut:
 
-![alt text](<Cuplikan layar 2025-11-06 111831.png>)
+![alt text](./images/Cuplikan%20layar%202025-11-06%20111831.png)
 
 dan untuk perintah `curl http://10.73.4.5` akan didapatkan respon sebagai berikut:
 
-![alt text](<Cuplikan layar 2025-11-06 111808.png>)
+![alt text](./images/Cuplikan%20layar%202025-11-06%20111808.png)
 
 ## 13. Nginx Custom Listen Port
 
